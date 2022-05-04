@@ -10,11 +10,11 @@ namespace ContactSystem
         public string Name { get; set; }
         public string NumberPhone { get; set; }
 
+
         public override string ToString()
         {
             return $"Имя: {Name} Номер телефона: {NumberPhone}";
         }
-
 
     }
 }

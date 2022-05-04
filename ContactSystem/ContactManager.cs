@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ContactSystem
 {
@@ -14,38 +12,42 @@ namespace ContactSystem
         public void AddNew(Contact contact)
         {
             contacts.Add(contact);
-            Console.WriteLine("Контакт добавлен");
         }
         public void Delete(int id)
         {
             for (int i = 0; i < contacts.Count; i++)
+            {
                 if (contacts[i].Id == id)
                     contacts.RemoveAt(i);
-            Console.WriteLine("Контакт удален");
-
+            }
         }
-        public void Change(int id)
+        public void Change(int id, Contact contact)
         {
             for (int i = 0; i < contacts.Count; i++)
+            {
                 if (contacts[i].Id == id)
                 {
-                    Console.WriteLine("Введите имя и номер");
-                    contacts[i].Name = Console.ReadLine();
-                    contacts[i].NumberPhone = Console.ReadLine();
-                    Console.WriteLine("Контакт изменен");
+                    contacts[i].Name = contact.Name;
+                    contacts[i].NumberPhone = contact.NumberPhone;
                 }
+            }
         }
-        public void FindByName(string name)
+        public List <Contact> FindByName(string name)
         {
-            Console.WriteLine(contacts.Find(contact => contact.Name.IndexOf(name, StringComparison.CurrentCultureIgnoreCase) >=0).ToString());
-        }
-        public void ViewAll()
-        {
+            List <Contact> foundContacts = new List <Contact>();
+
             foreach (var contact in contacts)
             {
-                Console.WriteLine(contact.ToString());
+                if (contact.Name.ToUpper() == name.ToUpper())
+                {
+                    foundContacts.Add(contact);
+                }
             }
-
+        return foundContacts;  
+        }
+        public List<Contact> ViewAll()
+        {
+          return  new List<Contact>();  
         }
         
     }
